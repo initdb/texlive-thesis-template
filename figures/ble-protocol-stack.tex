@@ -1,0 +1,25 @@
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[node distance=0 cm,outer sep = 0pt,inner sep = 2pt]
+        \tikzset{field/.style={align=center,shape=rectangle,minimum height=0.6cm,minimum width=60mm,draw}}
+        \tikzset{spacer/.style={align=center,shape=rectangle,minimum height=0.6cm,minimum width=2mm}}
+        \tikzset{largefield/.style={align=center,shape=rectangle,minimum height=0.6cm,minimum width=122mm,draw}}
+    
+        \node[largefield] (app) {Applications};
+    
+        \node[spacer,below=of app] (gapgatt) {};
+        \node[field,left=of gapgatt] (gap) {\acf{gap}};
+        \node[field,right=of gapgatt] (gatt) {\acf{gatt}};
+        
+        \node[spacer,below=of gapgatt] (smpatt) {};
+        \node [field,left=of smpatt] (smp) {\acf{smp}};
+        \node [field,right=of smpatt] (att) {\acf{att}};
+    
+        \node [largefield,below=of smpatt] (l2cap) {\acf{l2cap}};
+        \node [largefield,below=of l2cap,fill=gray!30] (hci) {\textbf{\acf{hci}}};
+        \node [largefield,below=of hci] (ll) {Link Layer};
+        \node [largefield,below=of ll] {\ac{ble} Physical Layer};
+    \end{tikzpicture}
+    \caption{\ac{ble} Protocol Stack nach \cite[S.497]{Sauter17:SMC}}
+    \label{fig:bleprotocolstack}
+\end{figure}

@@ -1,0 +1,11 @@
+@startuml
+package "Software Product" {
+node documentation
+[program1]
+[program2]
+[program3]
+
+database data1
+database data2
+}
+@enduml
