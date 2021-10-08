@@ -34,11 +34,12 @@ jobs:
           run: |
             cd /work
             latexmk -pdf --shell-escape -synctex=1 -file-line-error -outdir=$(pwd) thesis.tex
-            #cp thesis.pdf result.pdf
+            cp thesis.pdf thesis_title.pdf
       - name: Release
         uses: docker://antonyurchenko/git-release:latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHANGELOG_FILE: none
         with:
-          args: thesis.tex
+          args: thesis_title.pdf
             
