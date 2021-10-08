@@ -25,7 +25,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - uses: addnab/docker-run-action@v3
+      - name: build
+        uses: addnab/docker-run-action@v3
         with:
           registry: ghcr.io/initdb
           image: ghcr.io/initdb/docker-texlive:main
@@ -34,5 +35,10 @@ jobs:
             cd /work
             latexmk -pdf --shell-escape -synctex=1 -file-line-error -outdir=$(pwd) thesis.tex
             #cp thesis.pdf result.pdf
-
+      - name: Release
+        uses: docker://antonyurchenko/git-release:latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: thesis.tex
             
