@@ -30,8 +30,8 @@ jobs:
           registry: ghcr.io/initdb
           image: ghcr.io/initdb/docker-texlive:main
           run: |
-            #cd $BUILD_DIR
-            latexmk -pdf --shell-escape -synctex=1 -file-line-error -outdir=$(pwd) $GITHUB_WORKSPACE/thesis.tex
+            pwd
+            latexmk -pdf --shell-escape -synctex=1 -file-line-error -outdir=$(pwd) ./thesis.tex
             #cp thesis.pdf result.pdf
 
             
