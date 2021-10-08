@@ -7,6 +7,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
+    tags:
+    - "v[0-9]+.[0-9]+.[0-9]+"
   pull_request:
     branches: [ main ]
 
@@ -35,13 +37,20 @@ jobs:
             cd /work
             latexmk -pdf --shell-escape -synctex=1 -file-line-error -outdir=$(pwd) thesis.tex
             cp thesis.pdf thesis_title.pdf
-      - name: Release
+      - name: Release Latest
         uses: docker://antonyurchenko/git-release:latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CHANGELOG_FILE: "none"
           UNRELEASED_TAG: "latest"
           UNRELEASED: "update"
+        with:
+          args: thesis_title.pdf
+      - name: Release          
+        uses: docker://antonyurchenko/git-release:latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHANGELOG_FILE: "none"
         with:
           args: thesis_title.pdf
             
