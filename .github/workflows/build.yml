@@ -31,7 +31,7 @@ jobs:
           image: ghcr.io/initdb/docker-texlive:main
           run: |
             #cd $BUILD_DIR
-            latexmk -pdf --shell-escape -synctex=1 -file-line-error -outdir=$(pwd) thesis.tex
+            latexmk -pdf --shell-escape -synctex=1 -file-line-error -outdir=$(pwd) $GITHUB_WORKSPACE/thesis.tex
             #cp thesis.pdf result.pdf
 
             
