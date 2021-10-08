@@ -28,7 +28,7 @@ jobs:
       - uses: addnab/docker-run-action@v3
         with:
           registry: ghcr.io/initdb
-          image: docker-texlive:main
+          image: ghcr.io/initdb/docker-texlive:main
           run: |
             latexmk -version
             pygmentize -V
