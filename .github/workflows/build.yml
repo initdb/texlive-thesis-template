@@ -39,8 +39,9 @@ jobs:
         uses: docker://antonyurchenko/git-release:latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CHANGELOG_FILE: none
-          UNRELEASED_TAG: latest
+          CHANGELOG_FILE: "none"
+          UNRELEASED_TAG: "latest"
+          UNRELEASED: "update"
         with:
           args: thesis_title.pdf
             
