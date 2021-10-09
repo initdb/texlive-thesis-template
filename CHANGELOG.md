@@ -1,4 +1,9 @@
 # Changelog
+## [1.0.2] - 2021-10-08
+### Changed
+- updated readme
+
+
 ## [1.0.1] - 2021-10-08
 ### Added
 - repo as template
